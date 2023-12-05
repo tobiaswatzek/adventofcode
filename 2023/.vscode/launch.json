@@ -38,7 +38,7 @@
                     "kind": "bin"
                 }
             },
-            "args": ["--day=1", "--data-dir=./data"],
+            "args": ["--day=2", "--data-dir=./data"],
             "cwd": "${workspaceFolder}"
         },
         {
