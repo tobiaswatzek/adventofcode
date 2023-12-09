@@ -1,8 +1,5 @@
-use std::{
-    collections::HashMap,
-    fs,
-    path::PathBuf,
-};
+use rayon::prelude::*;
+use std::{collections::HashMap, fs, path::PathBuf};
 
 pub fn solve(input_path: &PathBuf) -> (String, String) {
     let input = fs::read_to_string(input_path).expect("Should have been able to read the file");
@@ -28,6 +25,34 @@ fn solve_first(input: &str) -> u64 {
     let lowest_location = seeds
         .iter()
         .map(|s| lookup_location(*s, &almanac))
+        .min()
+        .unwrap();
+
+    lowest_location
+}
+
+fn solve_second(input: &str) -> u64 {
+    let lines: Vec<&str> = input.lines().collect();
+    let seed_instructions = lines[0][7..]
+        .split(' ')
+        .map(|s| {
+            s.parse()
+                .expect(format!("must be a number but is '{}'", s).as_str())
+        })
+        .collect::<Vec<u64>>();
+    let seeds = seed_instructions[..]
+        .chunks_exact(2)
+        .flat_map(|c| match c {
+            [start, count] => [*start..*start + *count].into_iter(),
+            _ => unreachable!(),
+        })
+        .flatten();
+
+    let almanac = parse_almanac(lines);
+
+    let lowest_location = seeds
+        .par_bridge()
+        .map(|s| lookup_location(s, &almanac))
         .min()
         .unwrap();
 
@@ -119,10 +144,6 @@ type Almanac = HashMap<MapType, Vec<Map>>;
 struct ParseState {
     current_map_type: Option<MapType>,
     almanac: HashMap<MapType, Vec<Map>>,
-}
-
-fn solve_second(_input: &str) -> i32 {
-    0
 }
 
 fn parse_map_type(input: &str) -> Option<MapType> {
