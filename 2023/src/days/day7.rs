@@ -45,7 +45,7 @@ fn solve_first(input: &str) -> u32 {
         .sum()
 }
 
-fn solve_second(input: &str) -> u64 {
+fn solve_second(_input: &str) -> u64 {
     0
 }
 

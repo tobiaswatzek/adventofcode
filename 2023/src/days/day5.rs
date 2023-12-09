@@ -121,7 +121,7 @@ struct ParseState {
     almanac: HashMap<MapType, Vec<Map>>,
 }
 
-fn solve_second(input: &str) -> i32 {
+fn solve_second(_input: &str) -> i32 {
     0
 }
 
