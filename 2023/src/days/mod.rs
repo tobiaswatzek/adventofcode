@@ -7,6 +7,7 @@ mod day6;
 mod day7;
 mod day8;
 mod day9;
+mod day10;
 
 use std::path::PathBuf;
 
@@ -24,6 +25,7 @@ static DAY_REGISTRY: phf::Map<u8, DayFn> = phf_map! {
     7u8 => day7::solve,
     8u8 => day8::solve,
     9u8 => day9::solve,
+    10u8 => day10::solve,
 };
 
 pub fn solve_day(day: &u8, input_path: &PathBuf) -> (String, String) {
