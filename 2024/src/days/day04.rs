@@ -90,6 +90,37 @@ fn count_search(s: &str) -> usize {
     xre.captures_iter(s).count() + sre.captures_iter(s).count()
 }
 
-fn solve_second(_input: &str) -> i64 {
-    0
+fn solve_second(input: &str) -> usize {
+    let lines = input.lines()
+        .map(|line| line.chars().collect::<Vec<char>>())
+        .collect::<Vec<Vec<char>>>();
+
+    let mut count = 0;
+
+    for y in 1..(lines.len() - 1) {
+        for x in 1..(lines[0].len() - 1) {
+            let center = lines[y][x];
+            if center != 'A' {
+                continue;
+            }
+            let upper_left = lines[y-1][x-1];
+            let lower_right = lines[y+1][x+1];
+            let upper_right = lines[y-1][x+1];
+            let lower_left = lines[y+1][x-1];
+
+            if is_ms_match(upper_left, lower_right) && is_ms_match(upper_right, lower_left) {
+                count += 1;
+            }
+        }
+    }
+
+    count
+}
+
+fn is_ms_match(a: char, b: char) -> bool {
+    match (a, b) {
+        ('M', 'S') => true,
+        ('S', 'M') => true,
+        _ => false,
+    }
 }
