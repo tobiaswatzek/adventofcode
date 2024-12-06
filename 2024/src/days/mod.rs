@@ -7,6 +7,7 @@ mod day02;
 mod day03;
 mod day04;
 mod day05;
+mod day06;
 
 type DayFn = fn(&PathBuf) -> (String, String);
 
@@ -16,6 +17,7 @@ static DAY_REGISTRY: phf::Map<u8, DayFn> = phf_map! {
     3u8 => day03::solve,
     4u8 => day04::solve,
     5u8 => day05::solve,
+    6u8 => day06::solve,
 };
 
 pub fn solve_day(day: &u8, input_path: &PathBuf) -> (String, String) {
