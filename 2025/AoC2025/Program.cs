@@ -2,4 +2,5 @@
 
 Console.WriteLine("AoC 2025");
 
-await DayOne.Run();
+// await DayOne.Run();
+await DayTwo.Run();
