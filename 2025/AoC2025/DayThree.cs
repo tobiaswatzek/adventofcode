@@ -22,7 +22,6 @@ public static class DayThree
             var first = batteryBank[..^1].Select((battery, index) => (battery, index)).MaxBy(t => t.battery);
             var last = batteryBank[(first.index + 1)..].Max();
             var joltage = int.Parse($"{first.battery}{last}");
-            Console.WriteLine(joltage);
             totalJoltage += joltage;
         }
 
