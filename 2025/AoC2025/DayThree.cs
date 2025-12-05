@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace AoC2025;
 
 public static class DayThree
