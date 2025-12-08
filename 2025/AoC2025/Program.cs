@@ -7,4 +7,5 @@ Console.WriteLine("AoC 2025");
  // await DayThree.Run();
 // await DayFour.Run();
 // await DayFive.Run();
-await DaySix.Run();
+// await DaySix.Run();
+await DaySeven.Run();
