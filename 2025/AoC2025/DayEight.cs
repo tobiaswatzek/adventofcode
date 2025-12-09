@@ -1,5 +1,3 @@
-using System.Collections.Immutable;
-
 namespace AoC2025;
 
 public class DayEight
